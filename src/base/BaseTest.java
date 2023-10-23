@@ -175,7 +175,6 @@ public class BaseTest {
      */
     public void test() {
         String s = "123";
-        String s2 = "123";
     }
 
     public static void main(String[] args) {
