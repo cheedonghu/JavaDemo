@@ -1,7 +1,7 @@
 package usage.base;
 
 import cn.hutool.core.util.HexUtil;
-import model.DemoClassA;
+import model.base.DemoClassA;
 
 import java.nio.charset.StandardCharsets;
 

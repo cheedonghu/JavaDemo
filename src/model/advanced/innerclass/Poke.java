@@ -1,6 +1,6 @@
 package model.advanced.innerclass;
 
-import model.DemoClassA;
+import model.base.DemoClassA;
 
 /**
  * 扑克类，内部有红桃和黑桃
