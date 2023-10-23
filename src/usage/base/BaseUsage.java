@@ -171,6 +171,31 @@ public class BaseUsage {
     }
 
     /**
+     * 测试在finally内修改返回值
+     */
+    public void testCatchFinally() {
+        System.out.println(testCatchFinally2());
+    }
+
+    public String testCatchFinally2() {
+        String result = null;
+        try {
+            int i = 1 / 0;
+            result = "string";
+            return result;
+        } catch (Exception e) {
+            System.out.println("catch exception");
+            result = "exception";
+            return result;
+        } finally {
+            result = "finally modified" + result;
+            System.out.println("result modified");
+            // 不加return修改的结果不会返回
+            return result;
+        }
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -179,7 +204,7 @@ public class BaseUsage {
 
     public static void main(String[] args) {
         BaseUsage baseTest = new BaseUsage();
-        baseTest.testUtf16AndByteArray();
+        baseTest.testCatchFinally();
     }
 
 }

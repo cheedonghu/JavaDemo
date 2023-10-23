@@ -13,6 +13,9 @@ public class DemoClassA {
         this.string = string;
     }
 
+    public DemoClassA() {
+    }
+
     public String getString() {
         return string;
     }

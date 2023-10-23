@@ -2,6 +2,9 @@ package usage.advanced;
 
 import model.advanced.abstractinfo.SystemAHttpUtil;
 import model.advanced.abstractinfo.SystemBHttpUtil;
+import model.advanced.innerclass.ClassA;
+import model.advanced.innerclass.ClassB;
+import model.advanced.innerclass.Poke;
 import model.advanced.interfaceinfo.CheckBillInterface;
 import model.advanced.interfaceinfo.HostCheck;
 import model.advanced.interfaceinfo.WalletCheck;
@@ -50,6 +53,29 @@ public class AdvancedInfoUsage {
     }
 
     /**
+     * 内部类和静态内部类
+     * 一般用在POJO类中
+     * 归纳某些不会复用的类。。。？ 这玩意是真抽象
+     */
+    public void testInnerClass() {
+        Poke poke = new Poke();
+//        Poke.Peach peach = new Poke.Peach().
+//        Poke.Spade spade = new Poke.Spade();
+    }
+
+    /**
+     * 类的加载顺序及其解释：主要涉及类的初始化
+     * 1.父类的静态块。
+     * 2.子类的静态块。
+     * 3.父类的实例初始化块和构造方法。
+     * 4.子类的实例初始化块和构造方法。
+     */
+    public void testLoadSequence() {
+        ClassA ab = new ClassB();
+        ab = new ClassB();
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -58,6 +84,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testInterfaceUsage();
+        advancedInfoUsage.testLoadSequence();
     }
 }
