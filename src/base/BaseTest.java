@@ -1,6 +1,9 @@
 package base;
 
+import cn.hutool.core.util.HexUtil;
 import model.DemoClassA;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * @description: java基本内容测试
@@ -90,21 +93,37 @@ public class BaseTest {
 
     /**
      * 字符串特性
+     *
+     * 字符串，字符串常量池，字符串对象初始化
+     * ,常量池，堆,intern()方法
+     *
+     * 初始化策略不同：复用常量池，节省内存
+     *  常量池：节省内存
+     *  intern()方法：使用常量池
      */
-    public void testString() {
+    public void testStringConst() {
+        // Java会首先检查字符串常量池中是否已经存在相同内容的字符串对象。如果存在，它会直接将引用指向已存在的对象，而不会创建新的对象
         String s1 = "Programming";
+        // 它会强制创建一个新的字符串对象，无论字符串常量池中是否已经存在相同内容的字符串。
+        // 因此，s2 会在堆内存中创建一个新的字符串对象，而不会与 s1 共享内存地址。
         String s2 = new String("Programming");
         String s3 = "Program";
         String s4 = "ming";
+        // 编译器在编译时便会将其组合起来，所以s5引用的是常量池中的对象
         String s5 = "Program" + "ming";
+        // s3,s4在编译时无法确定，所以在运行时拼接，+号本质采用了new StringBuilder方式，所以在堆上
         String s6 = s3 + s4;
         System.out.println(System.identityHashCode(s1));
         System.out.println(System.identityHashCode(s2));
         System.out.println(System.identityHashCode(s3));
         System.out.println(System.identityHashCode(s4));
-        System.out.println(System.identityHashCode(s5));
-        System.out.println(System.identityHashCode(s6));
+        System.out.println("s5: " + System.identityHashCode(s5));
+        System.out.println("s6: " + System.identityHashCode(s6));
+        // 当调用 s2.intern() 时，它会尝试将 s2 的内容放入字符串常量池。
+        // 因为 s2 是一个通过 new 创建的字符串对象，它的内容不在字符串常量池中。
+        // 因此，s2.intern() 会将 s2 的内容添加到字符串常量池，并返回对字符串常量池中的相同字符串的引用。
         System.out.println(System.identityHashCode(s2.intern()));
+        // 参考上文，也是返回常量池中相同字符串的引用
         System.out.println(System.identityHashCode(s6.intern()));
 
         System.out.println(s1 == s2);
@@ -115,6 +134,41 @@ public class BaseTest {
         System.out.println(s2 == s2.intern());
     }
 
+    /**
+     * 重载，重写
+     * 编译；运行，子父类
+     * 重载无法根据返回类型区分：无法确定调用的方法，返回类型不一定使用
+     */
+    public void testOverLoadOverRide() {
+        String s = "123";
+        String s2 = "123";
+    }
+//    /**
+//     * 重载，重写
+//     */
+//    public int testOverLoadOverRide() {
+//        String s = "123";
+//        String s2 = "123";
+//    }
+
+
+    /**
+     * 测试字符集,utf16编码,字节数组
+     */
+    public void testUtf16AndByteArray() {
+        String s = "Ω";
+
+        // 默认用的utf8
+        System.out.println(HexUtil.encodeHexStr(s.getBytes()));
+
+        byte[] bytes = HexUtil.decodeHex(HexUtil.encodeHexStr(s.getBytes()));
+
+        System.out.println(new String(bytes, StandardCharsets.ISO_8859_1));
+        System.out.println(new String(bytes, StandardCharsets.UTF_16));
+        System.out.println(new String(bytes, StandardCharsets.UTF_8));
+
+        System.out.println(HexUtil.encodeHexStr(s.getBytes(StandardCharsets.UTF_16)));
+    }
 
     /**
      * test
@@ -126,7 +180,7 @@ public class BaseTest {
 
     public static void main(String[] args) {
         BaseTest baseTest = new BaseTest();
-        baseTest.testString();
+        baseTest.testUtf16AndByteArray();
     }
 
 }
