@@ -1,4 +1,4 @@
-package base;
+package usage.base;
 
 import cn.hutool.core.util.HexUtil;
 import model.DemoClassA;
@@ -6,12 +6,12 @@ import model.DemoClassA;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @description: java基本内容测试
+ * @description: java基本知识
  * @author: east
  * @date: 2023/10/22
  */
 
-public class BaseTest {
+public class BaseUsage {
 
     /**
      * 自动装箱和拆箱
@@ -178,7 +178,7 @@ public class BaseTest {
     }
 
     public static void main(String[] args) {
-        BaseTest baseTest = new BaseTest();
+        BaseUsage baseTest = new BaseUsage();
         baseTest.testUtf16AndByteArray();
     }
 
