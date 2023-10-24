@@ -1,0 +1,30 @@
+package model.advanced.sync;
+
+/**
+ * 有synchronized修饰的方法
+ *
+ * @author: east
+ * @date: 2023/10/24
+ */
+
+public class ClassWithSynchronized {
+    public synchronized void funcA() {
+        System.out.println("thread: " + Thread.currentThread().getId() + " do sth in synchronized funA");
+        try {
+            Thread.sleep(4000);
+            System.out.println("thread: " + Thread.currentThread().getId() + " end");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public synchronized void funcB() {
+        System.out.println("thread: " + Thread.currentThread().getId() + " do sth in synchronized funB");
+        try {
+            Thread.sleep(4000);
+            System.out.println("thread: " + Thread.currentThread().getId() + " end");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

@@ -201,6 +201,8 @@ public class BaseUsage {
     /**
      * 使用treeMap和treeSet存放需要排序的对象
      * treeSet的放入对象，treeMap的键：需要对象实现Comparable接口
+     *
+     * 或通过Collections.sort进行排序：只需要new一个comparable接口即可，比上面限制小
      */
     public void testSortContainer() {
         ArrayList<TheClassImpComparable> theClassImpComparableList = new ArrayList<>();

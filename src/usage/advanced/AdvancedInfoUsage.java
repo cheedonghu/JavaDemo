@@ -8,6 +8,7 @@ import model.advanced.innerclass.Poke;
 import model.advanced.interfaceinfo.CheckBillInterface;
 import model.advanced.interfaceinfo.HostCheck;
 import model.advanced.interfaceinfo.WalletCheck;
+import model.advanced.sync.ClassWithSynchronized;
 
 /**
  * 高级知识验证类
@@ -76,6 +77,26 @@ public class AdvancedInfoUsage {
     }
 
     /**
+     * synchronized相关使用特性
+     * note: 实际拿的对象锁！
+     */
+    public void testSynchronizedFun() {
+        ClassWithSynchronized classWithSynchronized = new ClassWithSynchronized();
+        Thread threadA = new Thread(classWithSynchronized::funcA);
+        Thread threadB = new Thread(classWithSynchronized::funcB);
+        threadA.start();
+        threadB.start();
+
+        ClassWithSynchronized classWithSynchronized2 = new ClassWithSynchronized();
+        ClassWithSynchronized classWithSynchronized3 = new ClassWithSynchronized();
+        Thread threadC = new Thread(classWithSynchronized3::funcA);
+        Thread threadD = new Thread(classWithSynchronized2::funcB);
+        threadC.start();
+        threadD.start();
+
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -84,6 +105,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testLoadSequence();
+        advancedInfoUsage.testSynchronizedFun();
     }
 }
