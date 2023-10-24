@@ -1,4 +1,4 @@
-package usage.special;
+package model.special;
 
 /**
  * try catch中父子类问题

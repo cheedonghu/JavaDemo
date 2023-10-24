@@ -1,7 +1,7 @@
 package usage.base;
 
 import cn.hutool.core.util.HexUtil;
-import model.base.DemoClassA;
+import model.base.CommonClassA;
 import model.base.TheClassImpComparable;
 
 import java.nio.charset.StandardCharsets;
@@ -75,21 +75,21 @@ public class BaseUsage {
      * demoClassA是值；@2133c8f8是引用
      */
     public void testPassParam1() {
-        DemoClassA demoClassA = new DemoClassA("str1");
+        CommonClassA commonClassA = new CommonClassA("str1");
 
-        testPassParam2(demoClassA);
+        testPassParam2(commonClassA);
 
-        System.out.println(demoClassA.getString());
+        System.out.println(commonClassA.getString());
     }
 
-    public void testPassParam2(DemoClassA demoClassA) {
-        System.out.println(demoClassA);
+    public void testPassParam2(CommonClassA commonClassA) {
+        System.out.println(commonClassA);
 
-        demoClassA = new DemoClassA("str2");
+        commonClassA = new CommonClassA("str2");
 
-        System.out.println(demoClassA);
+        System.out.println(commonClassA);
 
-        demoClassA.setString("str3");
+        commonClassA.setString("str3");
     }
 
 

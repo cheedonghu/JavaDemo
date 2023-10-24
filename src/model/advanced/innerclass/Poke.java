@@ -1,6 +1,6 @@
 package model.advanced.innerclass;
 
-import model.base.DemoClassA;
+import model.base.CommonClassA;
 
 /**
  * 扑克类，内部有红桃和黑桃
@@ -16,7 +16,7 @@ public class Poke {
         }
     }
 
-    public class Peach extends DemoClassA {
+    public class Peach extends CommonClassA {
         public Peach() {
             super();
             System.out.println("Poke.Peach created");

@@ -1,4 +1,4 @@
-package model.advanced.sync;
+package model.advanced.concurrent.sync;
 
 /**
  * 有synchronized修饰的方法
