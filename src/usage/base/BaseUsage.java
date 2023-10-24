@@ -2,8 +2,10 @@ package usage.base;
 
 import cn.hutool.core.util.HexUtil;
 import model.base.DemoClassA;
+import model.base.TheClassImpComparable;
 
 import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 /**
  * @description: java基本知识
@@ -195,6 +197,41 @@ public class BaseUsage {
         }
     }
 
+
+    /**
+     * 使用treeMap和treeSet存放需要排序的对象
+     * treeSet的放入对象，treeMap的键：需要对象实现Comparable接口
+     */
+    public void testSortContainer() {
+        ArrayList<TheClassImpComparable> theClassImpComparableList = new ArrayList<>();
+        theClassImpComparableList.add(new TheClassImpComparable(20, "d"));
+        theClassImpComparableList.add(new TheClassImpComparable(30, "c"));
+        theClassImpComparableList.add(new TheClassImpComparable(40, "b"));
+        theClassImpComparableList.add(new TheClassImpComparable(50, "a"));
+
+        // treeSet和treeMap的使用
+        TreeMap<TheClassImpComparable, String> nameMapTheClassImpComparableTreeMap = new TreeMap<>();
+        TreeSet<TheClassImpComparable> theClassImpComparableSet = new TreeSet<>();
+        for (TheClassImpComparable theClassImpComparable : theClassImpComparableList) {
+            theClassImpComparableSet.add(theClassImpComparable);
+
+            nameMapTheClassImpComparableTreeMap.put(theClassImpComparable, theClassImpComparable.getName());
+        }
+        theClassImpComparableSet.stream().forEach(x -> System.out.println(x));
+        System.out.println("\n");
+        nameMapTheClassImpComparableTreeMap.keySet().stream().forEach(x -> System.out.println(x));
+
+        // Collections.sort的使用
+        Collections.sort(theClassImpComparableList, new Comparator<TheClassImpComparable>() {
+            @Override
+            public int compare(TheClassImpComparable o1, TheClassImpComparable o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        System.out.println("\n");
+        theClassImpComparableList.stream().forEach(x -> System.out.println(x));
+    }
+
     /**
      * test
      */
@@ -204,7 +241,7 @@ public class BaseUsage {
 
     public static void main(String[] args) {
         BaseUsage baseTest = new BaseUsage();
-        baseTest.testCatchFinally();
+        baseTest.testSortContainer();
     }
 
 }
