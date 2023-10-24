@@ -18,13 +18,15 @@ public class ClassWithSynchronized {
         }
     }
 
-    public synchronized void funcB() {
-        System.out.println("thread: " + Thread.currentThread().getId() + " do sth in synchronized funB");
-        try {
-            Thread.sleep(4000);
-            System.out.println("thread: " + Thread.currentThread().getId() + " end");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    public void funcB() {
+        synchronized (this) {
+            System.out.println("thread: " + Thread.currentThread().getId() + " do sth in synchronized funB");
+            try {
+                Thread.sleep(4000);
+                System.out.println("thread: " + Thread.currentThread().getId() + " end");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

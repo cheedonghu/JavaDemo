@@ -84,15 +84,15 @@ public class AdvancedInfoUsage {
         ClassWithSynchronized classWithSynchronized = new ClassWithSynchronized();
         Thread threadA = new Thread(classWithSynchronized::funcA);
         Thread threadB = new Thread(classWithSynchronized::funcB);
-        threadA.start();
         threadB.start();
+        threadA.start();
 
-        ClassWithSynchronized classWithSynchronized2 = new ClassWithSynchronized();
-        ClassWithSynchronized classWithSynchronized3 = new ClassWithSynchronized();
-        Thread threadC = new Thread(classWithSynchronized3::funcA);
-        Thread threadD = new Thread(classWithSynchronized2::funcB);
-        threadC.start();
-        threadD.start();
+//        ClassWithSynchronized classWithSynchronized2 = new ClassWithSynchronized();
+//        ClassWithSynchronized classWithSynchronized3 = new ClassWithSynchronized();
+//        Thread threadC = new Thread(classWithSynchronized3::funcA);
+//        Thread threadD = new Thread(classWithSynchronized2::funcB);
+//        threadC.start();
+//        threadD.start();
 
     }
 
