@@ -77,7 +77,7 @@ public class AdvancedInfoUsage {
     }
 
     /**
-     * synchronized相关使用特性
+     * synchronized相关使用特性，可直接在方法前修饰，也可以在代码块内声明对象
      * note: 实际拿的对象锁！
      */
     public void testSynchronizedFun() {
