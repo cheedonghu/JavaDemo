@@ -2,7 +2,9 @@ package usage.advanced.serializable;
 
 import model.advanced.serializable.ClassWithSerializable;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
@@ -25,8 +27,20 @@ public class SerializableUsage {
         }
     }
 
+    public void testDeSerializable() {
+        try (FileInputStream fileInputStream = new FileInputStream("ClassWithSerializable.txt");
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
+
+            ClassWithSerializable o = (ClassWithSerializable) objectInputStream.readObject();
+            System.out.println("read done");
+            System.out.println(o.getName() + ", " + o.getAge());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         SerializableUsage serializableUsage = new SerializableUsage();
-        serializableUsage.testSerializable();
+        serializableUsage.testDeSerializable();
     }
 }

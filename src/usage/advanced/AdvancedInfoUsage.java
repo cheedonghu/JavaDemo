@@ -12,8 +12,13 @@ import model.advanced.innerclass.Poke;
 import model.advanced.interfaceinfo.CheckBillInterface;
 import model.advanced.interfaceinfo.HostCheck;
 import model.advanced.interfaceinfo.WalletCheck;
+import model.advanced.serializable.ClassWithSerializable;
 import model.base.CommonClassA;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -166,6 +171,34 @@ public class AdvancedInfoUsage {
 
         for (int i = 0; i < 10; i++) {
             System.out.println("Main Thread Id : " + Thread.currentThread().getId() + " times : " + i);
+        }
+    }
+
+    /**
+     * 序列化相关操作，类实现序列化接口，然后序列化反序列化
+     * <p>
+     * 目的：序列化后方便存储和传输（转为字节流后防止乱序？）
+     */
+    public void testSerializable() {
+        try (FileOutputStream fileOutputStream = new FileOutputStream("ClassWithSerializable.txt");
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+            ClassWithSerializable classWithSerializable = new ClassWithSerializable("name", "age");
+            objectOutputStream.writeObject(classWithSerializable);
+            System.out.println("write done");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void testDeSerializable() {
+        try (FileInputStream fileInputStream = new FileInputStream("ClassWithSerializable.txt");
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
+
+            ClassWithSerializable o = (ClassWithSerializable) objectInputStream.readObject();
+            System.out.println("read done");
+            System.out.println(o.getName() + ", " + o.getAge());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
