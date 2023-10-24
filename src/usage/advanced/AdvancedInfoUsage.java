@@ -15,6 +15,9 @@ import model.advanced.interfaceinfo.WalletCheck;
 import model.base.CommonClassA;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * 高级知识验证类
@@ -140,7 +143,28 @@ public class AdvancedInfoUsage {
 //        CompletableFuture.allOf(voidCompletableFuture).join();
 
         for (int i = 0; i < 10; i++) {
-//            System.out.println("Main thread "+i);
+            System.out.println("Main Thread Id : " + Thread.currentThread().getId() + " times : " + i);
+        }
+    }
+
+    /**
+     * 线程池基础使用
+     * Executor 线程池接口, 定义线程池实现部分
+     * Executors 线程池工具类, 提供常用线程池定义
+     * ThreadPoolExecutor 自定义配置线程池, 推荐使用Executors,除非确实要自定义
+     */
+    public void testExecutorsUsage() {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        ClassExtendThread classExtendThread = new ClassExtendThread();
+        ClassImpCallable classImpCallable = new ClassImpCallable();
+        ClassImpRunnable classImpRunnable = new ClassImpRunnable();
+
+        Future<?> submit = executorService.submit(classExtendThread);
+        Future<?> submit2 = executorService.submit(classImpCallable);
+        Future<?> submit3 = executorService.submit(classImpRunnable);
+
+        for (int i = 0; i < 10; i++) {
             System.out.println("Main Thread Id : " + Thread.currentThread().getId() + " times : " + i);
         }
     }
@@ -154,6 +178,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testAsnyc();
+        advancedInfoUsage.testExecutorsUsage();
     }
 }
