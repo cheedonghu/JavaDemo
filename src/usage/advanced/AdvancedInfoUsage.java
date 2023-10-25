@@ -21,6 +21,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -246,6 +248,36 @@ public class AdvancedInfoUsage {
 
 
     /**
+     * 反射相关操作
+     * 获取的是操作类对象的工具，具体要操作哪个对象需要最后传入
+     */
+    public void testReflection() {
+        MyProperties myProperties = new MyProperties();
+        try {
+            // 获取私有对象值
+            Class<MyProperties> targetClass = MyProperties.class;
+            Field tempField = targetClass.getDeclaredField("reflectTest");
+            tempField.setAccessible(true);
+            String value = (String) tempField.get(myProperties);
+            System.out.println("the value of private column temp is " + value);
+
+            // 修改私有对象: 直接通过field或method
+            tempField.set(myProperties, "reflect field modified");
+            System.out.println("the value of private column temp is " + myProperties.getReflectTest());
+
+            // 通过method
+            Method setTempMethod = targetClass.getDeclaredMethod("setReflectTest", String.class);
+            setTempMethod.setAccessible(true);
+            Object reflectMethodModified = setTempMethod.invoke(myProperties, "reflect method modified");
+            System.out.println(reflectMethodModified);
+            System.out.println("the value of private column temp is " + myProperties.getReflectTest());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
      * test
      */
     public void test() {
@@ -254,6 +286,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testOracleExecuteSqlProcedure();
+        advancedInfoUsage.testReflection();
     }
 }

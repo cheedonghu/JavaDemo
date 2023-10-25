@@ -15,6 +15,9 @@ public class MyProperties {
     private String oracleUser;
     private String oraclePassword;
 
+    private String reflectTest = "test";
+
+
     public MyProperties() {
         loadProperties();
     }
@@ -43,8 +46,11 @@ public class MyProperties {
         return oraclePassword;
     }
 
-    public static void main(String[] args) {
-        MyProperties myProperties = new MyProperties();
-        System.out.println(myProperties.getOracleUrl());
+    public String getReflectTest() {
+        return reflectTest;
+    }
+
+    private void setReflectTest(String reflectTest) {
+        this.reflectTest = reflectTest;
     }
 }

@@ -235,6 +235,22 @@ public class BaseUsage {
     }
 
     /**
+     * 获取类类型
+     */
+    public void testGetClass() {
+        try {
+            Class<? extends String> aClass = "123".getClass();
+            Class<String> stringClass = String.class;
+            Class<?> aClass1 = Class.forName("java.lang.String");
+
+
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
      * test
      */
     public void test() {
@@ -243,7 +259,7 @@ public class BaseUsage {
 
     public static void main(String[] args) {
         BaseUsage baseTest = new BaseUsage();
-        baseTest.testSortContainer();
+        baseTest.test();
     }
 
 }
