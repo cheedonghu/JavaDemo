@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 
 public class SerializableUsage {
     /**
-     * 序列化相关操作 todo 未完成
+     * 序列化相关操作
      */
     public void testSerializable() {
         try (FileOutputStream fileOutputStream = new FileOutputStream("ClassWithSerializable.txt");
