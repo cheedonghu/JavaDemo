@@ -1,4 +1,6 @@
-package model.advanced.interfaceinfo;
+package model.advanced.designpattern.factory.implement.manualcheck;
+
+import model.advanced.designpattern.factory.interfaceinfo.manualcheck.ManualCheckInterface;
 
 /**
  * 钱包对账
@@ -7,7 +9,7 @@ package model.advanced.interfaceinfo;
  * @date: 2023/10/23
  */
 
-public class WalletCheck implements CheckBillInterface {
+public class WalletManualCheck implements ManualCheckInterface {
     @Override
     public void preCheck() {
         System.out.println("I will do wallet check pre check");

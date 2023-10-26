@@ -6,12 +6,14 @@ import model.advanced.concurrent.async.ClassExtendThread;
 import model.advanced.concurrent.async.ClassImpCallable;
 import model.advanced.concurrent.async.ClassImpRunnable;
 import model.advanced.concurrent.sync.ClassWithSynchronized;
+import model.advanced.designpattern.factory.implement.manualcheck.HostManualCheck;
+import model.advanced.designpattern.factory.implement.manualcheck.WalletCheckFactory;
+import model.advanced.designpattern.factory.implement.manualcheck.WalletManualCheck;
+import model.advanced.designpattern.factory.interfaceinfo.manualcheck.ManualCheckInterface;
+import model.advanced.designpattern.simplefactory.SimpleCheckFactory;
 import model.advanced.innerclass.ClassA;
 import model.advanced.innerclass.ClassB;
 import model.advanced.innerclass.Poke;
-import model.advanced.interfaceinfo.CheckBillInterface;
-import model.advanced.interfaceinfo.HostCheck;
-import model.advanced.interfaceinfo.WalletCheck;
 import model.advanced.properties.MyProperties;
 import model.advanced.serializable.ClassWithSerializable;
 import model.base.CommonClassA;
@@ -57,8 +59,8 @@ public class AdvancedInfoUsage {
      * 设计目的：简化重复代码
      */
     public void testInterfaceUsage() {
-        CheckBillInterface hostCheck = new HostCheck();
-        CheckBillInterface walletCheck = new WalletCheck();
+        ManualCheckInterface hostCheck = new HostManualCheck();
+        ManualCheckInterface walletCheck = new WalletManualCheck();
 
         // 使用时根据核对类型获取接口
         hostCheck.preCheck();
@@ -278,6 +280,25 @@ public class AdvancedInfoUsage {
 
 
     /**
+     * 工厂模式相关的使用
+     */
+    public void testFactoryUsage() {
+        // 简单工厂
+        ManualCheckInterface hostCheck = SimpleCheckFactory.createManualCheck("HOST");
+        hostCheck.preCheck();
+        hostCheck.doCheck();
+        hostCheck.doNotify();
+        hostCheck.cancelCheck();
+
+        // 工厂
+        ManualCheckInterface walletCheck = new WalletCheckFactory().createManualCheck();
+        walletCheck.preCheck();
+        walletCheck.doCheck();
+        walletCheck.doNotify();
+        walletCheck.cancelCheck();
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -286,6 +307,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testReflection();
+        advancedInfoUsage.testFactoryUsage();
     }
 }

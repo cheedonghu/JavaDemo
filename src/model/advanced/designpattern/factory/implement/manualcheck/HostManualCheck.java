@@ -1,4 +1,6 @@
-package model.advanced.interfaceinfo;
+package model.advanced.designpattern.factory.implement.manualcheck;
+
+import model.advanced.designpattern.factory.interfaceinfo.manualcheck.ManualCheckInterface;
 
 /**
  * 流水对账
@@ -7,7 +9,7 @@ package model.advanced.interfaceinfo;
  * @date: 2023/10/23
  */
 
-public class HostCheck implements CheckBillInterface {
+public class HostManualCheck implements ManualCheckInterface {
     @Override
     public void preCheck() {
         System.out.println("I will do host check pre check");
@@ -26,6 +28,12 @@ public class HostCheck implements CheckBillInterface {
     @Override
     public void cancelCheck() {
         System.out.println("I will cancel this check");
+    }
+
+    public void doWholeCheck() {
+        this.preCheck();
+        this.doCheck();
+        this.doNotify();
     }
 
 }
