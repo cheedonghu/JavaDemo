@@ -10,6 +10,9 @@ import model.advanced.designpattern.factory.implement.manualcheck.HostManualChec
 import model.advanced.designpattern.factory.implement.manualcheck.WalletCheckFactory;
 import model.advanced.designpattern.factory.implement.manualcheck.WalletManualCheck;
 import model.advanced.designpattern.factory.interfaceinfo.manualcheck.ManualCheckInterface;
+import model.advanced.designpattern.publishandsubscribe.MyEvent;
+import model.advanced.designpattern.publishandsubscribe.Publisher;
+import model.advanced.designpattern.publishandsubscribe.Subscriber;
 import model.advanced.designpattern.simplefactory.SimpleCheckFactory;
 import model.advanced.innerclass.ClassA;
 import model.advanced.innerclass.ClassB;
@@ -299,6 +302,23 @@ public class AdvancedInfoUsage {
     }
 
     /**
+     * 发布订阅模式
+     */
+    public void testPublishAndSubscribe() {
+        Subscriber subscriber1 = new Subscriber("subscribe1");
+        Subscriber subscriber2 = new Subscriber("subscribe2");
+        Subscriber subscriber3 = new Subscriber("subscribe3");
+
+        Publisher publisher = new Publisher();
+        publisher.subscribe(subscriber1);
+        publisher.subscribe(subscriber2);
+        publisher.subscribe(subscriber3);
+
+        publisher.publishEvent(new MyEvent("publisher publish a msg"));
+
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -307,6 +327,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testFactoryUsage();
+        advancedInfoUsage.testPublishAndSubscribe();
     }
 }
