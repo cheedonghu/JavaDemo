@@ -14,6 +14,8 @@ import model.advanced.designpattern.publishandsubscribe.MyEvent;
 import model.advanced.designpattern.publishandsubscribe.Publisher;
 import model.advanced.designpattern.publishandsubscribe.Subscriber;
 import model.advanced.designpattern.simplefactory.SimpleCheckFactory;
+import model.advanced.designpattern.single.HungrySingleton;
+import model.advanced.designpattern.single.LazySingleton;
 import model.advanced.innerclass.ClassA;
 import model.advanced.innerclass.ClassB;
 import model.advanced.innerclass.Poke;
@@ -303,6 +305,9 @@ public class AdvancedInfoUsage {
 
     /**
      * 发布订阅模式
+     * 更多优化：参考Spring：ApplicationEventMulticaster；ApplicationListenerRegistry类
+     *
+     * 目的：解耦，提高可读性
      */
     public void testPublishAndSubscribe() {
         Subscriber subscriber1 = new Subscriber("subscribe1");
@@ -319,6 +324,17 @@ public class AdvancedInfoUsage {
     }
 
     /**
+     * 单例模式初始化
+     */
+    public void testSingletonUsage() {
+        HungrySingleton hungrySingleton = HungrySingleton.getInstance();
+        LazySingleton lazySingleton = LazySingleton.getInstance();
+
+        hungrySingleton.function();
+        lazySingleton.function();
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -327,6 +343,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testPublishAndSubscribe();
+        advancedInfoUsage.testSingletonUsage();
     }
 }
