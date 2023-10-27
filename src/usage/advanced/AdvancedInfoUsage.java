@@ -189,7 +189,8 @@ public class AdvancedInfoUsage {
     /**
      * 序列化相关操作，类实现序列化接口，然后序列化反序列化
      * <p>
-     * 目的：序列化后方便存储和传输（转为字节流后防止乱序？）
+     * 目的：序列化后方便存储和传输
+     * 一般将对象保存到文件或通过Java对象流进行传输时，才需要实现Serializable接口。
      */
     public void testSerializable() {
         try (FileOutputStream fileOutputStream = new FileOutputStream("ClassWithSerializable.txt");
