@@ -21,6 +21,7 @@ import model.advanced.innerclass.ClassB;
 import model.advanced.innerclass.Poke;
 import model.advanced.properties.MyProperties;
 import model.advanced.serializable.ClassWithSerializable;
+import model.advanced.template.BaseResp;
 import model.base.CommonClassA;
 import oracle.jdbc.OracleDriver;
 
@@ -336,6 +337,22 @@ public class AdvancedInfoUsage {
     }
 
     /**
+     * 模板相关使用
+     */
+    public void testTemplateUsage() {
+        BaseResp<String> stringData = new BaseResp<>("string data");
+        System.out.println(stringData.getData());
+        // 这里需要使用实例的data类型，其他类型则报错
+//        stringData.ok2(123)
+        BaseResp<String> newStringData = stringData.ok2("String 123");
+        System.out.println(newStringData.getData());
+
+        BaseResp<Integer> ok = BaseResp.ok(123);
+        System.out.println("Integer " + ok.getData());
+
+    }
+
+    /**
      * test
      */
     public void test() {
@@ -344,6 +361,6 @@ public class AdvancedInfoUsage {
 
     public static void main(String[] args) {
         AdvancedInfoUsage advancedInfoUsage = new AdvancedInfoUsage();
-        advancedInfoUsage.testSingletonUsage();
+        advancedInfoUsage.testTemplateUsage();
     }
 }
