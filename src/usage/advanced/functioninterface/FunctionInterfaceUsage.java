@@ -12,6 +12,8 @@ package usage.advanced.functioninterface;
  *  todo 写篇博客
  *  https://chat.openai.com/c/90bf09a3-275f-418a-aec0-f220dabbd4b6
  *
+ *  https://chat.openai.com/share/4ac82bb9-0221-4c7d-8378-32e0862df38b
+ *
  * @author: east
  * @date: 2023/11/16
  */
