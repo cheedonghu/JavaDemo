@@ -34,7 +34,7 @@ public class QuickSort {
             while (i < j && base <= array[j]) {
                 j--;
             }
-            while (i < j && base >= array[j]) {
+            while (i < j && base >= array[i]) {
                 i++;
             }
             // 找到目标（这里也可能代表i=j，不过无所谓，相等时交换也没事）
