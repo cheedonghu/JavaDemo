@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * @date: 2023/11/24
  */
 public class OuterOrderT extends AbstractOrderT<OuterOrderRequest> {
-    protected SaveT<OuterSavedInfo> save; // note 只有在这里明确指定，save的方法才能正常调用
+    protected SaveT<OuterSavedInfo> save; // note 通配符如果不在模板指定，则只有在这里明确指定，save的方法才能正常调用
 
     public OuterOrderT(OuterSaveOrderImp save) {
         super(save);
