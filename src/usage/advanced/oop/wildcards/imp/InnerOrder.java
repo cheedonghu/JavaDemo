@@ -1,10 +1,10 @@
-package model.advanced.oop.wildcards.imp;
+package usage.advanced.oop.wildcards.imp;
 
 
-import model.advanced.oop.wildcards.imp.model.bo.InnerSavedInfo;
-import model.advanced.oop.wildcards.imp.model.req.InnerOrderRequest;
-import model.advanced.oop.wildcards.imp.save.InnerSaveOrder;
-import model.advanced.oop.wildcards.interfac.AbstractOrder;
+import usage.advanced.oop.wildcards.imp.model.bo.InnerSavedInfo;
+import usage.advanced.oop.wildcards.imp.model.req.InnerOrderRequest;
+import usage.advanced.oop.wildcards.imp.save.InnerSaveOrder;
+import usage.advanced.oop.wildcards.interfac.AbstractOrder;
 
 import java.math.BigDecimal;
 

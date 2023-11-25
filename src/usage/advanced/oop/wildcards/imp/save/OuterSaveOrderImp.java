@@ -1,8 +1,8 @@
-package model.advanced.oop.wildcards.imp.save;
+package usage.advanced.oop.wildcards.imp.save;
 
 
-import model.advanced.oop.wildcards.imp.model.bo.OuterSavedInfo;
-import model.advanced.oop.wildcards.interfac.SaveT;
+import usage.advanced.oop.wildcards.imp.model.bo.OuterSavedInfo;
+import usage.advanced.oop.wildcards.interfac.SaveT;
 
 /**
  * 外部渠道下单信息落表

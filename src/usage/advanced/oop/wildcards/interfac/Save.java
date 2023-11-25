@@ -1,7 +1,7 @@
-package model.advanced.oop.wildcards.interfac;
+package usage.advanced.oop.wildcards.interfac;
 
 
-import model.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
 
 /**
  * 保存下单相关信息， 模板方法

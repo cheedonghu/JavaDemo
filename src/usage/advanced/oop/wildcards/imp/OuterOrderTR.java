@@ -1,9 +1,9 @@
-package model.advanced.oop.wildcards.imp;
+package usage.advanced.oop.wildcards.imp;
 
-import model.advanced.oop.wildcards.imp.model.bo.OuterSavedInfo;
-import model.advanced.oop.wildcards.imp.model.req.OuterOrderRequest;
-import model.advanced.oop.wildcards.imp.save.OuterSaveOrderImp;
-import model.advanced.oop.wildcards.interfac.AbstractOrderTR;
+import usage.advanced.oop.wildcards.imp.model.bo.OuterSavedInfo;
+import usage.advanced.oop.wildcards.imp.model.req.OuterOrderRequest;
+import usage.advanced.oop.wildcards.imp.save.OuterSaveOrderImp;
+import usage.advanced.oop.wildcards.interfac.AbstractOrderTR;
 
 import java.math.BigDecimal;
 

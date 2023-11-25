@@ -1,7 +1,7 @@
-package model.advanced.oop.wildcards.interfac;
+package usage.advanced.oop.wildcards.interfac;
 
 
-import model.advanced.oop.wildcards.interfac.model.req.OrderRequest;
+import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
 
 /**
  * 模板方法所属的正常接口作为成员变量

@@ -1,8 +1,8 @@
-package model.advanced.oop.wildcards.interfac;
+package usage.advanced.oop.wildcards.interfac;
 
 
-import model.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
-import model.advanced.oop.wildcards.interfac.model.req.OrderRequest;
+import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
 
 /**
  * 模板类接口作为成员变量，通过模板指定接口类型

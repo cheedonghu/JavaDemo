@@ -1,8 +1,8 @@
-package model.advanced.oop.wildcards.imp.save;
+package usage.advanced.oop.wildcards.imp.save;
 
 
-import model.advanced.oop.wildcards.interfac.Save;
-import model.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.Save;
+import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
 
 /**
  * 内部渠道保存账单

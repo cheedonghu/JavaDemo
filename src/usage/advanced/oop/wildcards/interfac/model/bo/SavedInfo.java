@@ -1,4 +1,4 @@
-package model.advanced.oop.wildcards.interfac.model.bo;
+package usage.advanced.oop.wildcards.interfac.model.bo;
 
 
 /**

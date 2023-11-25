@@ -1,7 +1,7 @@
-package model.advanced.oop.wildcards.interfac.model.req;
+package usage.advanced.oop.wildcards.interfac.model.req;
 
 
-import model.advanced.oop.wildcards.interfac.model.bo.OrderInfo;
+import usage.advanced.oop.wildcards.interfac.model.bo.OrderInfo;
 
 /**
  * @author: east
