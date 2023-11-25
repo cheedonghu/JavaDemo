@@ -27,7 +27,7 @@ public class InnerOrder extends AbstractOrder<InnerOrderRequest> {
             // 校验等逻辑....
 
             // 落表  这里save为模板方法
-            save.save(new InnerSavedInfo(innerOrderRequest.generateOrderInfo()));
+            save.save(new InnerSavedInfo(innerOrderRequest.generateOrderInfo(), "this is inner special message"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

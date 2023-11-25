@@ -14,16 +14,23 @@ import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
  */
 
 public class InnerSavedInfo extends SavedInfo {
+    protected String specialMsg;
 
 
-    public InnerSavedInfo(OrderInfo orderInfo) {
+    public InnerSavedInfo(OrderInfo orderInfo, String specialMsg) {
         super(orderInfo);
+        this.specialMsg = specialMsg;
+    }
+
+    public String getSpecialMsg() {
+        return specialMsg;
     }
 
     @Override
     public String toString() {
         return "InnerSavedInfo{" +
-                "orderInfo=" + orderInfo +
+                "specialMsg='" + specialMsg + '\'' +
+                ", orderInfo=" + orderInfo +
                 '}';
     }
 }

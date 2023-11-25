@@ -19,8 +19,11 @@ public class InnerSaveOrder implements Save {
      */
     @Override
     public <T extends SavedInfo> void save(T savedInfo) {
+//        InnerSavedInfo innerSavedInfo=(InnerSavedInfo) savedInfo;
         // 落表
-        System.out.println("开始落表");
+        System.out.println("内部渠道下单信息开始落表");
+//        System.out.println("内部渠道特有数据获取: "+innerSavedInfo.getSpecialMsg());
+        // todo 这里有个很大的问题就是如果不通过强制类型转换无法拿到特定种类的数据
         System.out.println(savedInfo.toString());
     }
 }
