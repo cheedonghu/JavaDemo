@@ -9,11 +9,10 @@ package usage.advanced.oop.wildcards.interfac.model.bo;
  * @author: east
  * @date: 2023/11/25
  */
-
-public class SavedInfo {
+public class BaseSavedInfo {
     protected OrderInfo orderInfo; //这里实际应该是表数据，而不是bo，这里临时替代一下
 
-    public SavedInfo(OrderInfo orderInfo) {
+    public BaseSavedInfo(OrderInfo orderInfo) {
         this.orderInfo = orderInfo;
     }
 

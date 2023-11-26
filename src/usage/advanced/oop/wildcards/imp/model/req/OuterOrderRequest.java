@@ -7,7 +7,7 @@ import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
 import java.math.BigDecimal;
 
 /**
- * 外部渠道A下单
+ * 外部渠道下单
  *
  * @author: east
  * @date: 2023/11/23

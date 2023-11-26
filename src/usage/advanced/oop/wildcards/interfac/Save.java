@@ -1,7 +1,7 @@
 package usage.advanced.oop.wildcards.interfac;
 
 
-import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.model.bo.BaseSavedInfo;
 
 /**
  * 保存下单相关信息， 模板方法
@@ -15,5 +15,5 @@ public interface Save {
      *
      * @param savedInfo 相关信息:账单表，统计表
      */
-    public <T extends SavedInfo> void save(T savedInfo);
+    public <T extends BaseSavedInfo> void save(T savedInfo);
 }

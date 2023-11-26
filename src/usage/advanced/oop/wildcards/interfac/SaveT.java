@@ -1,7 +1,7 @@
 package usage.advanced.oop.wildcards.interfac;
 
 
-import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.model.bo.BaseSavedInfo;
 
 /**
  * 保存下单相关信息, 模板类
@@ -9,7 +9,7 @@ import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
  * @author: east
  * @date: 2023/11/23
  */
-public interface SaveT<T extends SavedInfo> {
+public interface SaveT<T extends BaseSavedInfo> {
     /**
      * 保存下单数据
      *

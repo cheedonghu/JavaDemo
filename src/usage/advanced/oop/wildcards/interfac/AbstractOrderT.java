@@ -1,7 +1,7 @@
 package usage.advanced.oop.wildcards.interfac;
 
 
-import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.model.bo.BaseSavedInfo;
 import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
 
 /**
@@ -13,10 +13,10 @@ import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
 public abstract class AbstractOrderT<T extends OrderRequest<?>> {
 
     // 不通过模板指定，仅用通配符参数限定，
-    protected SaveT<? extends SavedInfo> save; // note 如果实现类中不指定SaveT的类型，则save接口无法使用
+    protected SaveT<? extends BaseSavedInfo> save; // note 如果实现类中不指定SaveT的类型，则save接口无法使用
     // 原因： 编译器没那么聪明根据子类传入的saveT子对象推断出SaveT模板具体对应哪一个类，只能在这里明确指定或者子类重写
 
-    public AbstractOrderT(SaveT<? extends SavedInfo> save) {
+    public AbstractOrderT(SaveT<? extends BaseSavedInfo> save) {
         this.save = save;
     }
 

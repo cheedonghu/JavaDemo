@@ -3,6 +3,9 @@ package usage.advanced.oop.wildcards.interfac.model.bo;
 
 import java.math.BigDecimal;
 
+/**
+ * 账单通用数据
+ */
 public class OrderInfo {
     protected BigDecimal amt;
     protected String serial;

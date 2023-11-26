@@ -1,7 +1,7 @@
 package usage.advanced.oop.wildcards.interfac;
 
 
-import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
+import usage.advanced.oop.wildcards.interfac.model.bo.BaseSavedInfo;
 import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
 
 /**
@@ -10,7 +10,7 @@ import usage.advanced.oop.wildcards.interfac.model.req.OrderRequest;
  * @author: east
  * @date: 2023/11/24
  */
-public abstract class AbstractOrderTR<T extends OrderRequest<?>, R extends SavedInfo> {
+public abstract class AbstractOrderTR<T extends OrderRequest<?>, R extends BaseSavedInfo> {
     // 用模板指定了参数的类型
     protected SaveT<R> save;
 

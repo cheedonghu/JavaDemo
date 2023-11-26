@@ -1,7 +1,7 @@
 package usage.advanced.oop.wildcards.imp;
 
 
-import usage.advanced.oop.wildcards.imp.model.bo.InnerSavedInfo;
+import usage.advanced.oop.wildcards.imp.model.bo.InnerBaseSavedInfo;
 import usage.advanced.oop.wildcards.imp.model.req.InnerOrderRequest;
 import usage.advanced.oop.wildcards.imp.save.InnerSaveOrder;
 import usage.advanced.oop.wildcards.interfac.AbstractOrder;
@@ -27,7 +27,7 @@ public class InnerOrder extends AbstractOrder<InnerOrderRequest> {
             // 校验等逻辑....
 
             // 落表  这里save为模板方法
-            save.save(new InnerSavedInfo(innerOrderRequest.generateOrderInfo(), "this is inner special message"));
+            save.save(new InnerBaseSavedInfo(innerOrderRequest.generateOrderInfo(), "this is inner special message"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,8 +1,8 @@
 package usage.advanced.oop.wildcards.imp.model.bo;
 
 
+import usage.advanced.oop.wildcards.interfac.model.bo.BaseSavedInfo;
 import usage.advanced.oop.wildcards.interfac.model.bo.OrderInfo;
-import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
 
 /**
  * 下单落表信息
@@ -12,12 +12,11 @@ import usage.advanced.oop.wildcards.interfac.model.bo.SavedInfo;
  * @author: east
  * @date: 2023/11/25
  */
-
-public class InnerSavedInfo extends SavedInfo {
+public class InnerBaseSavedInfo extends BaseSavedInfo {
     protected String specialMsg;
 
 
-    public InnerSavedInfo(OrderInfo orderInfo, String specialMsg) {
+    public InnerBaseSavedInfo(OrderInfo orderInfo, String specialMsg) {
         super(orderInfo);
         this.specialMsg = specialMsg;
     }
