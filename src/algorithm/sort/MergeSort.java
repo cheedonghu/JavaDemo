@@ -11,13 +11,13 @@ import java.util.Arrays;
  */
 public class MergeSort {
     public void mergeSort(int[] array, int left, int right) {
-        if (array.length <= 1) {
+        if (left >= right) {
             return;
         }
-        int mid = array.length >> 1;
+        int mid = (left + right) >> 1;
 
-        mergeSort(array, 0, mid);
-        mergeSort(array, mid + 1, array.length - 1);
+        mergeSort(array, left, mid);
+        mergeSort(array, mid + 1, right);
 
         mergeArray(array, left, mid, right);
     }
@@ -31,7 +31,7 @@ public class MergeSort {
         int j = mid + 1;
         int[] result = new int[right - left + 1];
         int k = 0;
-        while (i < mid && j < right) {
+        while (i <= mid && j <= right) {
             if (array[i] <= array[j]) {
                 result[k++] = array[i];
                 i++;
@@ -42,13 +42,13 @@ public class MergeSort {
         }
 
         // 剩余的元素直接加到后面就行
-        while (i < mid) {
+        while (i <= mid) {
             result[k++] = array[i];
             i++;
         }
 
         // 剩余的元素直接加到后面就行，这里的逻辑和上面不会同时进行
-        while (j < array.length) {
+        while (j <= right) {
             result[k++] = array[j];
             j++;
         }
@@ -66,7 +66,7 @@ public class MergeSort {
         int[] array4 = {12, 24, 15, 26, 14, -10, 9, 16, -28, -16, 9, -6, 7, -29, 3, -6, 4, 0, 7, 0};
         int[] array5 = {2, 3, 3, 1, 5};
 
-        int[] array = array5;
+        int[] array = array1;
         MergeSort sort = new MergeSort();
         sort.mergeSort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
