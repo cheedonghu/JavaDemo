@@ -10,6 +10,15 @@ import java.util.Arrays;
  * @date: 2023/11/27
  */
 public class MergeSort {
+
+    /**
+     * TODO 链表排序：可以通过使用“迭代”替代“递归”来实现链表划分工作，从而省去递归使用的栈帧空间。
+     * 在链表中，节点增删操作仅需改变引用（指针）即可实现，因此合并阶段（将两个短有序链表合并为一个长有序链表）无须创建额外链表。
+     */
+    public void mergeSortOfLinkedList(int[] array, int left, int right) {
+
+    }
+
     public void mergeSort(int[] array, int left, int right) {
         if (left >= right) {
             return;
