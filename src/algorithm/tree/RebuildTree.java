@@ -25,25 +25,25 @@ public class RebuildTree {
 
     }
 
-    /**
-     * @param preorder
-     * @param inorder
-     * @param i        根节点在前序遍历数组中下标
-     * @param m        根节点在中序遍历数组中下标
-     * @param l
-     * @param r
-     * @return
-     */
-    public TreeNode dfs(int[] preorder, int[] inorder, int i, int m, int l, int r) {
-        if (r - l < 2) {
-            return new TreeNode(m);
-        }
-
-        // 初始化根节点
-        TreeNode root = new TreeNode(preorder[i]);
-        root.left = dfs(preorder, inorder, i + 1, getIndex(inorder, preorder[i]), l, m - 1);
-        root.right = dfs(preorder, inorder, i + 1 + m - l, getIndex(inorder, ));
-    }
+//    /**
+//     * @param preorder
+//     * @param inorder
+//     * @param i        根节点在前序遍历数组中下标
+//     * @param m        根节点在中序遍历数组中下标
+//     * @param l
+//     * @param r
+//     * @return
+//     */
+//    public TreeNode dfs(int[] preorder, int[] inorder, int i, int m, int l, int r) {
+//        if (r - l < 2) {
+//            return new TreeNode(m);
+//        }
+//
+//        // 初始化根节点
+//        TreeNode root = new TreeNode(preorder[i]);
+//        root.left = dfs(preorder, inorder, i + 1, getIndex(inorder, preorder[i]), l, m - 1);
+//        root.right = dfs(preorder, inorder, i + 1 + m - l, getIndex(inorder, ));
+//    }
 
     public static Integer getIndex(int[] array, Integer value) {
         for (int i = 0; i < array.length; i++) {
