@@ -4,6 +4,9 @@ import java.util.LinkedList;
 
 /**
  * 树逻辑结构
+ * 前序：根左右
+ * 中序：左根右
+ * 这里的左右代表的是整个树 ：整个左子树 | 根节点 | 整个右子树
  *
  * @author: east
  * @date: 2023/12/1

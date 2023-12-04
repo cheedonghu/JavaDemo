@@ -3,8 +3,13 @@ package algorithm.tree;
 import algorithm.util.Util;
 
 /**
- * 重建树： 设置根节点，设置左子树，设置右子树；递归(一次正确，次次正确！思维不用深入跟随递归！）；分治
+ * 重建树： 设置根节点，获取左子树的根位置然后设置左子树，获取右子树的根位置然后设置右子树；
+ * 然后缩小下个子问题（根据lr缩小子树范围）进行递归(一次正确，次次正确！思维不用深入跟随递归！）；分治
  * https://www.hello-algo.com/chapter_divide_and_conquer/build_binary_tree_problem/#3
+ *
+ * 关于重建：
+ * 前序和后序（或层序）无法重建： 因为根据根和左子树无法确认右子树位置（因为左子树长度不确定），也就组合不了左右子树
+ * 能否重建的关键就是能否确认：根与左右子树根 的位置，可以的化直接递归处理（树结构与递归基本绑定）
  *
  * @author: east
  * @date: 2023/12/1
@@ -22,7 +27,9 @@ public class RebuildTree {
      * @param inorder  中序
      */
     public void buildTree(int[] preorder, int[] inorder) {
+        // 根据前序和中序重建树；最初代码
 //        TreeNode root = dfs(preorder, inorder, 0, Util.findIndex(inorder, preorder[0]), 0, inorder.length - 1);
+        // 根据前序和中序重建树；优化后
         TreeNode root = dfs(preorder, inorder, 0, 0, inorder.length - 1);
 
         System.out.println("层序打印结果\n");
@@ -34,8 +41,8 @@ public class RebuildTree {
      * @param inorder  中序遍历节点
      * @param i        根节点在前序遍历数组中下标
      * @param m        根节点在中序遍历数组中下标
-     * @param l        左子树根在中序遍历数组中所在下标
-     * @param r        右子树在中序遍历数组中所在下标
+     * @param l        根节点所表示的树的左范围（分治的子问题范围）
+     * @param r        该树的右边界（分治的子问题范围）
      * @return 当前根节点
      */
     public TreeNode dfs(int[] preorder, int[] inorder, int i, int m, int l, int r) {
@@ -62,8 +69,8 @@ public class RebuildTree {
      * @param preorder  前序遍历节点
      * @param inorder   中序遍历节点
      * @param i        根节点在前序遍历数组中下标
-     * @param l        左子树根在中序遍历数组中所在下标
-     * @param r        右子树在中序遍历数组中所在下标
+     * @param l        根节点所表示的树的左范围（分治的子问题范围）
+     * @param r        该树的右边界（分治的子问题范围）
      * @return 当前根节点
      */
     public TreeNode dfs(int[] preorder, int[] inorder, int i, int l, int r) {
@@ -78,19 +85,49 @@ public class RebuildTree {
         // 获取根节点在中序遍历数组中的下标从而确定左子树，右子树长度
         int m = Util.findIndex(inorder, preorder[i]);
 
-        // 左子树
+        // 左子树. 只能用m与l的相对位置，不能直接使用
         root.left = dfs(preorder, inorder, i + 1, l, m - 1);
         // 右子树
         root.right = dfs(preorder, inorder, i + 1 + m - l, m + 1, r);
         return root;
     }
 
+    public void buildTreeByInAndPost(int[] inorder, int[] postorder) {
+        // 根据后序和中序重建树；
+        TreeNode root = rebuildByInAndPost(inorder, postorder, postorder.length - 1, 0, inorder.length - 1);
+
+        System.out.println("层序打印结果\n");
+        root.printSimpleTree();
+    }
+
+    public TreeNode rebuildByInAndPost(int[] inorder, int[] postorder, int i, int l, int r) {
+        // fixme bug
+        if (l > r || (Util.findIndex(inorder, postorder[i]) < l ^ Util.findIndex(inorder, postorder[i]) > r)) {
+            return null;
+        }
+
+        // 获取根节点在中序列表中的下标
+        int m = Util.findIndex(inorder, postorder[i]);
+
+        // 初始化根节点
+        TreeNode node = new TreeNode(postorder[i]);
+
+        node.left = rebuildByInAndPost(inorder, postorder, i - (r - m) - 1, l, i - (r - m) - 1);
+        node.right = rebuildByInAndPost(inorder, postorder, i - 1, i - (r - m), i - 1);
+        return node;
+    }
+
 
     public static void main(String[] args) {
-        int[] preorder = {3, 9, 2, 1, 7};
-        int[] inorder = {9, 3, 1, 2, 7};
+        int[] preorder = {3, 9, 4, 5, 2, 1, 7};
+        int[] inorder = {4, 9, 5, 3, 1, 2, 7};
+        int[] postorder = {4, 5, 9, 1, 7, 2, 3};
 
         RebuildTree rebuildTree = new RebuildTree();
-        rebuildTree.buildTree(preorder, inorder);
+        // 前序和中序
+//        rebuildTree.buildTree(preorder, inorder);
+
+        // 中序后后序
+        rebuildTree.buildTreeByInAndPost(inorder, postorder);
     }
 }
