@@ -142,11 +142,14 @@ public class RebuildTree {
         int[] inorder = {4, 9, 5, 3, 1, 2, 7};
         int[] postorder = {4, 5, 9, 1, 7, 2, 3};
 
+        int inorder2[] = {15, 9, 10, 3, 20, 5, 7, 8, 4};
+        int postorder2[] = {15, 10, 9, 5, 4, 8, 7, 20, 3};
+
         RebuildTree rebuildTree = new RebuildTree();
         // 前序和中序
 //        rebuildTree.buildTree(preorder, inorder);
 
         // 中序后后序
-        rebuildTree.buildTreeByInAndPost(inorder, postorder);
+        rebuildTree.buildTreeByInAndPost(inorder2, postorder2);
     }
 }
