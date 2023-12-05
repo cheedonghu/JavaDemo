@@ -10,6 +10,8 @@ import algorithm.util.Util;
  * 关于重建：
  * 前序和后序（或层序）无法重建： 因为根据根和左子树无法确认右子树位置（因为左子树长度不确定），也就组合不了左右子树
  * 能否重建的关键就是能否确认：根与左右子树根 的位置，可以的化直接递归处理（树结构与递归基本绑定）
+ *  根据中序的特性左根右因此知道了根节点即可确定左右子树的长度，从而以此分治，将问题分解为更小的树处理
+ *
  *
  * @author: east
  * @date: 2023/12/1
@@ -69,7 +71,7 @@ public class RebuildTree {
      * @param preorder  前序遍历节点
      * @param inorder   中序遍历节点
      * @param i        根节点在前序遍历数组中下标
-     * @param l        根节点所表示的树的左范围（分治的子问题范围）
+     * @param l        根节点所表示的树的左范围，这里因为使用rl关系来判断节点是否有子树，所以传的参数以中序维度进行的（分治的子问题范围）
      * @param r        该树的右边界（分治的子问题范围）
      * @return 当前根节点
      */
@@ -100,20 +102,35 @@ public class RebuildTree {
         root.printSimpleTree();
     }
 
+    /**
+     * 根据中序和后序重建树
+     * 中序： 根据中序获取左右子树长度，从而划分左右子树
+     * 后序： 根据后序特性确定根节点在尾部，从而获取子树根节点 i-1与 i-(r-m)-1
+     * 左        根        右
+     * l         m        r
+     * 左        右       根
+     * i-(r-m)-1   i-1      i
+     *
+     * @param inorder   中序
+     * @param postorder 后序
+     * @param i         后序中根节点下标
+     * @param l         中序左边界 （用来确定子树的左边界）
+     * @param r         中序右边界（用来确定子树的右边界）
+     * @return 重建树根节点
+     */
     public TreeNode rebuildByInAndPost(int[] inorder, int[] postorder, int i, int l, int r) {
-        // fixme bug
-        if (l > r || (Util.findIndex(inorder, postorder[i]) < l ^ Util.findIndex(inorder, postorder[i]) > r)) {
+        if (l > r ) {
             return null;
         }
 
-        // 获取根节点在中序列表中的下标
+        // 获取根节点在中序列表中的下标 note: 搭配中序lr边界用来确定左右子树长度和子树的根节点位置
         int m = Util.findIndex(inorder, postorder[i]);
 
         // 初始化根节点
         TreeNode node = new TreeNode(postorder[i]);
 
-        node.left = rebuildByInAndPost(inorder, postorder, i - (r - m) - 1, l, i - (r - m) - 1);
-        node.right = rebuildByInAndPost(inorder, postorder, i - 1, i - (r - m), i - 1);
+        node.left = rebuildByInAndPost(inorder, postorder, i - (r - m) - 1, l, m - 1);
+        node.right = rebuildByInAndPost(inorder, postorder, i - 1, m+1, r);
         return node;
     }
 
