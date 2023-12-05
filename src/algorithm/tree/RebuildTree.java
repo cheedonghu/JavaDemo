@@ -111,6 +111,8 @@ public class RebuildTree {
      * 左        右       根
      * i-(r-m)-1   i-1      i
      *
+     * note： l, r是中序中用来划分左右子树绝对位置下标的，lr和i相对独立。不能产生直接关系。i-(r-m)-1能使用是因为用的相对关系
+     *
      * @param inorder   中序
      * @param postorder 后序
      * @param i         后序中根节点下标
