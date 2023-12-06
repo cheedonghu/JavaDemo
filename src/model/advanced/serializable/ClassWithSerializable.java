@@ -10,6 +10,8 @@ import java.io.Serializable;
  */
 
 public class ClassWithSerializable implements Serializable {
+    private static final long serialVersionUID = 10001L;
+
     private String name;
     private String age;
 
