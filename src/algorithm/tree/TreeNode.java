@@ -1,5 +1,8 @@
 package algorithm.tree;
 
+import model.special.exception.BaseException;
+
+import java.io.*;
 import java.util.LinkedList;
 
 /**
@@ -11,7 +14,9 @@ import java.util.LinkedList;
  * @author: east
  * @date: 2023/12/1
  */
-public class TreeNode {
+public class TreeNode implements Serializable {
+    private static final long serialVersionUID = 123456789L;
+
     public Integer value;
     public TreeNode left;
     public TreeNode right;
@@ -55,6 +60,28 @@ public class TreeNode {
                 deque.addLast(node.left);
                 deque.addLast(node.right);
             }
+        }
+    }
+
+    public void serializeTree() {
+        try (FileOutputStream fileOutputStream = new FileOutputStream("TreeObject1.ser");
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+            objectOutputStream.writeObject(this);
+            System.out.println("node serialize succeed");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new BaseException();
+        }
+    }
+
+    public void deserializeTree() {
+        try (FileInputStream fileInputStream = new FileInputStream("TreeObject1.ser");
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+            TreeNode root = (TreeNode) objectInputStream.readObject();
+            System.out.println("node deserialize succeed");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new BaseException();
         }
     }
 
