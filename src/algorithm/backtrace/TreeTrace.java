@@ -3,6 +3,7 @@ package algorithm.backtrace;
 
 import algorithm.tree.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,5 +39,14 @@ public class TreeTrace {
         // 回退
         // 去掉当前路径
         path.remove(path.size() - 1);
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.deserializeTree();
+        TreeTrace treeTrace = new TreeTrace();
+        List<TreeNode> path = new ArrayList<>();
+        ArrayList<List<TreeNode>> pathRes = new ArrayList<>();
+        treeTrace.findTrace(root, path, pathRes);
+        System.out.println("split");
     }
 }

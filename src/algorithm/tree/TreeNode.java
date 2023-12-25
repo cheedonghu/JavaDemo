@@ -21,6 +21,9 @@ public class TreeNode implements Serializable {
     public TreeNode left;
     public TreeNode right;
 
+    public TreeNode() {
+    }
+
     public TreeNode(Integer value) {
         this.value = value;
     }
@@ -74,11 +77,12 @@ public class TreeNode implements Serializable {
         }
     }
 
-    public void deserializeTree() {
+    public static TreeNode deserializeTree() {
         try (FileInputStream fileInputStream = new FileInputStream("TreeObject1.ser");
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             TreeNode root = (TreeNode) objectInputStream.readObject();
             System.out.println("node deserialize succeed");
+            return root;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new BaseException();
