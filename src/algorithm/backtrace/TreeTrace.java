@@ -23,14 +23,15 @@ public class TreeTrace {
      * @param pathRes 路径结果
      */
     public void findTrace(TreeNode root, List<TreeNode> path, List<List<TreeNode>> pathRes) {
-        // null：回溯； 3：剪枝
-        if (root == null || root.value == 3) {
+        // null：回溯； 9：剪枝
+        if (root == null || root.value == 9) {
             return;
         }
 
         path.add(root);
         if (root.value == 7) {
-            pathRes.add(path);
+            ArrayList<TreeNode> treeNodes = new ArrayList<>(path);
+            pathRes.add(treeNodes);
         }
 
         findTrace(root.left, path, pathRes);
