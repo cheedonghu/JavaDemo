@@ -16,7 +16,7 @@ import java.util.List;
  * @date: 2023/12/25
  */
 public class Backtrace {
-    /* 回溯算法框架 */
+    /* 回溯算法框架 note: 注意这里方法入参并不是写死的，具体问题具体分析!，分析很重要 */
     void backtrace(State state, List<Choice> choices, List<State> res) {
         if (isSolution(state)) {
             // 记录解
@@ -26,7 +26,7 @@ public class Backtrace {
         }
         // 遍历所有选择
         for (Choice choice : choices) {
-            // 剪枝: 作出选择，更新状态
+            // 剪枝: 作出选择，更新状态（note: 注意这里方法入参并不是写死的，具体问题具体分析
             if (isValid(state, choice)) {
                 //尝试：作出选择，更新状态
                 makeChoice(state, choice);

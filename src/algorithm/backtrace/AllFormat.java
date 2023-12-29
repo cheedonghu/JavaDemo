@@ -13,15 +13,22 @@ import java.util.List;
  */
 public class AllFormat {
     public void backtrace(List<String> state, List<String> choices, List<List<String>> res) {
+        // 结果判断
         if (isSolution(state)) {
+            // 记录结果
             recordSolution(state, res);
             return;
         }
 
+        // 所有可能.
         for (String choice : choices) {
+            // 剪枝,不出现重复元素
             if (isValid(state, choice)) {
+                // 更新状态
                 updateState(state, choice);
+                // 递归
                 backtrace(state, choices, res);
+                // 回退
                 undoChoice(state, choice);
             }
         }
@@ -56,9 +63,10 @@ public class AllFormat {
     public static void main(String[] args) {
         AllFormat allFormat = new AllFormat();
         ArrayList<String> state = new ArrayList<>();
-        List<String> choices = Arrays.asList("1", "2", "3");
+        List<String> choices = Arrays.asList("1", "2", "3", "4", "5");
         ArrayList<List<String>> res = new ArrayList<>();
         allFormat.backtrace(state, choices, res);
+        System.out.println(res.size());
     }
 
 }
