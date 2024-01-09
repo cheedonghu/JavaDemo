@@ -58,7 +58,8 @@ public class Sublist {
         // 剪枝：
         // 1. 元素和小于target
         // 2. 要求无重复组合。 分析一下：这里因为是纯正数，所以如果当前状态被包含在了结果集里面则说明不用继续下去了，再加元素也只会更大
-        // 怎么判断呢？ 强制让元素按照从小到大顺序排列(这里就也要求原数组有序,不需要！全排列包含所有情况，顺序无所谓),然后用res判断包含关系就行（可能要重写equals,不用 ArrayList实现了这中情况
+        // 怎么判断呢？ 强制让元素按照从小到大顺序排列(这里就也要求原数组有序,不需要！全排列包含所有情况，顺序无所谓),
+        // 然后用res判断包含关系就行（可能要重写equals,不用 ArrayList实现了这种情况
         Optional<Integer> sumOptional = state.stream().reduce(Integer::sum);
         Integer sum = sumOptional.isPresent() ? sumOptional.get() : 0;
         boolean judgeSum = sum < target;
