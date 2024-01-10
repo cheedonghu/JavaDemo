@@ -23,26 +23,31 @@ public class Nqueens {
         }
     }
 
+    /**
+     * N皇后问题
+     *
+     * @param row     行
+     * @param col     列（不需要此字段）
+     * @param state   state
+     * @param choices choices
+     * @param res     res
+     */
     public void backtrace(Integer row, Integer col, List<Res> state, List<List<String>> choices, List<List<Res>> res) {
         if (isSolution(state, choices)) {
             recordSolution(state, res);
             return;
         }
 
-        for (int i = 0; i < choices.size(); i++) {
-            if (isValid(row, col, state, choices.get(0))) {
-                updateState(row, col, state);
-//                    // 如果x到底，则x归0,y+1 ;
-                if (col == choices.size() - 1) {
-                    row += 1;
-                    col = 0;
-                } else {
-                    col += 1;
-                }
-                backtrace(row, col, state, choices, res);
+        // 全部的选择怎么确认？？？ 第一颗棋子在第一行：一行n个数，所以n种可能，后续往下一行递归
+        // 难点：所有的可能性和递归的下一种条件
+        // 所有可能性：n行->每行要从0列开始匹配，匹配失败则结束当前分支的递归
+        for (int column = 0; column < choices.size(); column++) {
+            // 判断当前row行 column列上棋子是否合法
+            if (isValid(row, column, state, choices.get(0))) {
+                updateState(row, column, state);
+                backtrace(row + 1, 0, state, choices, res);
                 undoChoice(state);
             }
-
         }
 
     }
@@ -110,7 +115,7 @@ public class Nqueens {
     }
 
     public static void main(String[] args) {
-        int n = 4;
+        int n = 5;
         List<List<String>> choices = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             ArrayList<String> choice = new ArrayList<>();
