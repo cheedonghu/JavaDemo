@@ -28,7 +28,7 @@ public class Package {
 
 
         for (int i = 1; i <= n; i++) {
-            for (int j = cap; j > -1; j--) {
+            for (int j = 1; j <= cap; j++) {
                 // 0.因为j<cap所以 DP[i-1,w] :w>=cap情况不用判断
                 // 1.判断是否可以添加第i个物品
                 if (j - weight[i] < 0) {
@@ -46,9 +46,29 @@ public class Package {
      * 完全背包问题：
      * 给定 $n$ 个物品，第 $i$ 个物品的重量为 $wgt[i-1]$、价值为 $val[i-1]$ ，
      * 和一个容量为 $cap$ 的背包。**每个物品可以重复选取**，问在限定背包容量下能放入物品的最大价值。
+     * 问题可以换个说法，在容量变化0-cap的背包空间内，给出每种容量对应的最大物品总价值？
+     *
+     * note: i代表的是第i个物品，总共n个，每次变更表示的是第i个要不要放进去，只要容量足够，可以一直放第i个
+     *
+     * 与01背包相似，只是物品可以重复选取，即i-1变成了i
+     * DP[i][c] = DP[i][c]
+     *          = DP[i][c-W[i]]+V[i], 前i-1个物品变成了前i个物品
      */
-    public void packageFull() {
+    public int packageFull(int n, int[] weight, int[] value, int cap) {
+        int[][] dp = new int[n + 1][cap + 1];
 
+        // dp[0][*]=0 dp[*][0]=0
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= cap; j++) {
+                if (j - weight[i] >= 0) {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - weight[i]] + value[i]);
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+            }
+        }
+        return dp[n][cap];
     }
 
 
@@ -59,7 +79,8 @@ public class Package {
         int[] weight = {0, 2, 3, 4, 5};
         int[] value = {0, 3, 4, 5, 6};
 
-        int count = aPackage.package01(n, weight, value, cap);
+//        int count = aPackage.package01(n, weight, value, cap);
+        int count = aPackage.packageFull(n, weight, value, cap);
         System.out.println("最大价值为：" + count);
     }
 
