@@ -1,4 +1,4 @@
-package algorithm.backtrace;
+package algorithm.dp;
 
 /**
  * 爬楼梯最小代价

@@ -1,4 +1,4 @@
-package algorithm.backtrace;
+package algorithm.dp;
 
 /**
  * 爬有限制的楼梯

@@ -1,4 +1,4 @@
-package algorithm.backtrace;
+package algorithm.dp;
 
 /**
  * 零钱兑换问题

@@ -1,4 +1,4 @@
-package algorithm.backtrace;
+package algorithm.dp;
 
 /**
  * 动态规划
