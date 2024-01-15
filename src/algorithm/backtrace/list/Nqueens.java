@@ -1,4 +1,4 @@
-package algorithm.backtrace;
+package algorithm.backtrace.list;
 
 import java.util.ArrayList;
 import java.util.List;

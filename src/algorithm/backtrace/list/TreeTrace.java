@@ -1,4 +1,4 @@
-package algorithm.backtrace;
+package algorithm.backtrace.list;
 
 
 import algorithm.tree.TreeNode;
