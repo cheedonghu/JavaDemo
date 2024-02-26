@@ -5,6 +5,8 @@ package model.advanced.designpattern.factory.interfaceinfo.manualcheck;
  * <p>
  * 后续有新的核对方式出现则其工厂类只需要实现此街口
  *
+ * 简单工厂，工厂，抽象工厂一个好的解释：https://www.cnblogs.com/jing99/p/12595494.html
+ *
  * @author: east
  * @date: 2023/10/25
  */
