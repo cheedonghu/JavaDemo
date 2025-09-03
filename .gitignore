@@ -32,3 +32,4 @@ bin/
 JavaDemo.iml
 *.txt
 config.properties
+/target
