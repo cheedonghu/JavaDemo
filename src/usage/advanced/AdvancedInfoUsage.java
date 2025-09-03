@@ -23,7 +23,6 @@ import model.advanced.properties.MyProperties;
 import model.advanced.serializable.ClassWithSerializable;
 import model.advanced.template.BaseResp;
 import model.base.CommonClassA;
-import oracle.jdbc.OracleDriver;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,7 +30,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.sql.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -225,35 +223,35 @@ public class AdvancedInfoUsage {
      * 5. 处理结果
      * 6. 关闭连接
      */
-    public void testOracleExecuteSqlProcedure() {
-        MyProperties myProperties = new MyProperties();
-        try {
-            // 1. 加载驱动
-            OracleDriver oracleDriver = new OracleDriver();
-            // 2. 创建连接
-            Connection connection = DriverManager.getConnection(
-                    myProperties.getOracleUrl(),
-                    myProperties.getOracleUser(),
-                    myProperties.getOraclePassword());
-            // 3. 准备sql
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from LY_USER_INFO where USER_NAME = ?");
-            preparedStatement.setString(1, "name");
-            // 4. 执行sql
-            ResultSet resultSet = preparedStatement.executeQuery();
-            // 5. 处理结果
-            while (resultSet.next()) {
-                System.out.println("USER_ID: " + resultSet.getString("USER_ID") + "USER_NAME: " + resultSet.getString("USER_NAME"));
-            }
-            // 6. 关闭连接
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-
-        }
-    }
+//    public void testOracleExecuteSqlProcedure() {
+//        MyProperties myProperties = new MyProperties();
+//        try {
+//            // 1. 加载驱动
+//            OracleDriver oracleDriver = new OracleDriver();
+//            // 2. 创建连接
+//            Connection connection = DriverManager.getConnection(
+//                    myProperties.getOracleUrl(),
+//                    myProperties.getOracleUser(),
+//                    myProperties.getOraclePassword());
+//            // 3. 准备sql
+//            PreparedStatement preparedStatement = connection.prepareStatement("select * from LY_USER_INFO where USER_NAME = ?");
+//            preparedStatement.setString(1, "name");
+//            // 4. 执行sql
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            // 5. 处理结果
+//            while (resultSet.next()) {
+//                System.out.println("USER_ID: " + resultSet.getString("USER_ID") + "USER_NAME: " + resultSet.getString("USER_NAME"));
+//            }
+//            // 6. 关闭连接
+//            resultSet.close();
+//            preparedStatement.close();
+//            connection.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//
+//        }
+//    }
 
 
     /**
